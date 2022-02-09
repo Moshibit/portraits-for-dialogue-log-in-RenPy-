@@ -13,8 +13,6 @@ In this part I could not move forward, I had an idea of ​​what I had to do b
 
 [color=#0000FF]Let's continue with the procedure, what follows is to add a callable(a function) to the configuration variable config.history_callbacks
 
-download it from:[/color]
-[url]https://github.com/Moshibit/portraits-for-dialogue-log-in-RenPy-[/url]
 
 [color=#0000FF]Uncomment one of the last two lines depending on the type of images you use in your project 
 
