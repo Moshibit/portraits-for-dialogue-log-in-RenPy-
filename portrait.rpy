@@ -37,32 +37,32 @@ init python:
 
         # create the image property on the entry object.
         if tag == "generic":
-            entry.image =  "{}{} generic{}".format(IMAGE_DIRECTORY, IMAGE_PREFIX,IMAGE_EXTENSION)
+            entry.image = "{}{} generic{}".format(IMAGE_DIRECTORY, IMAGE_PREFIX,IMAGE_EXTENSION)
             return
         if tag == "generic_girl":
-            entry.image =  "{}{} generic girl{}".format(IMAGE_DIRECTORY, IMAGE_PREFIX,IMAGE_EXTENSION)
+            entry.image = "{}{} generic girl{}".format(IMAGE_DIRECTORY, IMAGE_PREFIX,IMAGE_EXTENSION)
             return
         if tag == "generic_boy":
-            entry.image =  "{}{} generic boy{}".format(IMAGE_DIRECTORY, IMAGE_PREFIX,IMAGE_EXTENSION)
+            entry.image = "{}{} generic boy{}".format(IMAGE_DIRECTORY, IMAGE_PREFIX,IMAGE_EXTENSION)
             return
 
         # get the attributes of the current image
-        attributes = renpy.get_attributes(tag)  # attribute list
+        attributes = renpy.get_attributes(tag) # attribute tuple
 
-        # find out the attributes of the tag
+        # handling None atrributes
         if attributes is not None:
-            attributes = " ".join(attributes)  # the list is now a string
+            attributes = " ".join(attributes) # the tuple is now a string
         else:
             attributes = ""
 
-        # choose only one:
-        # use this line if you want the same image every time
+        # get the image to show, choose only one:
+        # * uncomment next line if you want the same image every time
         # image_string = "{}{} {}{}".format(IMAGE_DIRECTORY, IMAGE_PREFIX, tag, IMAGE_EXTENSION)
 
-        # or use this line if you want the image to match the current attributes
+        # * or uncomment next line if you want the image to match the current attributes
         image_string = "{}{} {} {}{}".format(IMAGE_DIRECTORY, IMAGE_PREFIX, tag, attributes, IMAGE_EXTENSION)
 
-        # avoid causing exceptions if image does not exist
+        # handling missing images
         if renpy.exists(image_string) == False:
             if config.developer:
                 image_string = "{}{} missing{}".format(IMAGE_DIRECTORY, IMAGE_PREFIX,IMAGE_EXTENSION)
