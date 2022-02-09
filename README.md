@@ -4,8 +4,6 @@ https://lemmasoft.renai.us/forums/viewtopic.php?f=51&t=60130
 
 Hello, I bring you a script that you are going to love, with which you can add images to the dialog history, these images correspond to the expression of the character shown in that dialog. This post you can also learn how to modify the history screen with features that do not come in Ren'Py.I share this script with you because I appreciate the community of creators of visual novels, I have learned a lot from it. And now it's time for me to share something you can use this script just remember to give me credit. I also want to thank PyTom who gave me guidance on what to do. without further ado let's start with the explanation. I have put the procedure in blue letters and the explanation remains in black.
 
-[img]https://github.com/Moshibit/portraits-for-dialogue-log-in-RenPy-/blob/main/captura_images.png?raw=true[/img]
-
 [color=#0000FF]As a first step we have to add the image property to our characters, this is so that Ren'Py relates our character object with an image tag. here is an example.[/color]
 [code]define e = Character("Eileen", image="eileen")[/code]
 
