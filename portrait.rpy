@@ -73,5 +73,59 @@ init python:
         entry.image = image_string
         return
 
-    # add the callback function to the configuration variable
+
+    def layeredimage_history_callback(entry):
+        tag = entry.image_tag
+
+        # Constants
+        IMAGE_PREFIX = "history"
+
+
+        # None when the character is not assigned an image tag.
+        if tag is None:
+            entry.image = None
+            return
+
+        # create the image property on the entry object.
+        if tag == "generic":
+            entry.image = "{} generic".format(IMAGE_PREFIX)
+            return
+        if tag == "generic_girl":
+            entry.image = "{} generic girl".format(IMAGE_PREFIX)
+            return
+        if tag == "generic_boy":
+            entry.image = "{} generic boy".format(IMAGE_PREFIX)
+            return
+
+        # get the attributes of the current image
+        attributes = renpy.get_attributes(tag) # attribute tuple
+
+        # handling missing images
+        check = []
+        for attribute in attributes:
+            check.append(attribute in renpy.get_ordered_image_attributes(tag))
+        if not all(check):
+            if config.developer:
+                layered_image = "{} missing".format(IMAGE_PREFIX)
+            else:
+                layered_image = None
+            entry.image = layered_image
+            return
+
+        # handling None atrributes
+        if attributes is not None:
+            attributes = " ".join(attributes) # the tuple is now a string
+        else:
+            attributes = ""
+
+        # get the image to show
+        layered_image = "{} {} {}".format(IMAGE_PREFIX, tag, attributes)
+
+        # create the image property on the entry object
+        entry.image = layered_image
+        return
+
+    # append the callback function to the configuration variable
+    # uncomment only one of the following two lines:
     config.history_callbacks.append(image_history_callback)
+    #config.history_callbacks.append(layeredimage_history_callback)
